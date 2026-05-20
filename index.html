@@ -20,10 +20,10 @@
     --white: #ffffff;
     --line: #e8e8e8;
   }
-
+ 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-
+ 
   body {
     font-family: 'Inter', sans-serif;
     background: var(--white);
@@ -31,7 +31,7 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
-
+ 
   /* ─── NAV ─── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -54,7 +54,7 @@
   }
   .nav-right a:hover { color: var(--red); }
   .nav-right a.active { color: var(--red); }
-
+ 
   /* ─── PAGE HEADER ─── */
   .page-top {
     padding: 130px 60px 72px;
@@ -75,14 +75,14 @@
     font-size: 17px; color: var(--gray-700);
     max-width: 560px; line-height: 1.7;
   }
-
+ 
   /* ─── CASES ─── */
   .cases-wrap {
     max-width: 960px;
     margin: 0 auto;
     padding: 80px 60px 120px;
   }
-
+ 
   /* ─── SINGLE CASE ─── */
   .case {
     border: 1.5px solid var(--line);
@@ -92,7 +92,7 @@
     transition: border-color 0.25s;
   }
   .case.open { border-color: var(--red); }
-
+ 
   /* header always visible */
   .case-head {
     padding: 36px 40px;
@@ -107,7 +107,7 @@
   }
   .case-head:hover { background: var(--gray-50); }
   .case.open .case-head { background: var(--white); border-bottom: 1px solid var(--line); }
-
+ 
   .case-meta {
     display: flex; align-items: center; gap: 14px;
     margin-bottom: 14px; flex-wrap: wrap;
@@ -126,19 +126,19 @@
   .case-period {
     font-size: 12px; color: var(--gray-500);
   }
-
+ 
   .case-title {
     font-family: 'Unbounded', sans-serif;
     font-size: clamp(18px, 2.5vw, 26px);
     font-weight: 800; line-height: 1.2;
     letter-spacing: -0.4px; margin-bottom: 16px;
   }
-
+ 
   .case-summary {
     font-size: 15px; color: var(--gray-700);
     line-height: 1.7; max-width: 620px;
   }
-
+ 
   /* metrics strip */
   .case-metrics {
     display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap;
@@ -154,7 +154,7 @@
     font-size: 11px; color: var(--gray-500);
     margin-top: 5px; letter-spacing: 0.2px;
   }
-
+ 
   /* toggle arrow */
   .case-toggle {
     width: 44px; height: 44px; flex-shrink: 0;
@@ -170,7 +170,7 @@
   .case:hover .case-toggle svg { fill: var(--red); }
   .case.open .case-toggle { background: var(--red); border-color: var(--red); }
   .case.open .case-toggle svg { fill: var(--white); transform: rotate(180deg); }
-
+ 
   /* ─── DETAILS (accordion body) ─── */
   .case-body {
     max-height: 0;
@@ -178,18 +178,18 @@
     transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .case.open .case-body { max-height: 2000px; }
-
+ 
   .case-body-inner {
     padding: 40px 40px 44px;
     display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
   }
-
+ 
   .detail-block { }
   .detail-block + .detail-block { }
-
+ 
   .detail-section { margin-bottom: 32px; }
   .detail-section:last-child { margin-bottom: 0; }
-
+ 
   .detail-heading {
     font-size: 10px; font-weight: 700; letter-spacing: 2px;
     text-transform: uppercase; color: var(--red);
@@ -197,14 +197,14 @@
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
   }
-
+ 
   .detail-text {
     font-size: 14px; line-height: 1.85; color: var(--gray-700);
   }
   .detail-text p { margin-bottom: 12px; }
   .detail-text p:last-child { margin-bottom: 0; }
   .detail-text strong { color: var(--black); font-weight: 600; }
-
+ 
   .detail-list {
     list-style: none; margin-top: 2px;
   }
@@ -218,7 +218,7 @@
     content: '—'; color: var(--red); flex-shrink: 0;
     font-weight: 700; margin-top: 1px;
   }
-
+ 
   .detail-highlight {
     background: rgba(200,16,46,0.05);
     border-left: 3px solid var(--red);
@@ -231,7 +231,7 @@
     margin: 0;
   }
   .detail-highlight strong { color: var(--black); }
-
+ 
   .detail-link {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 13px; font-weight: 600; color: var(--red);
@@ -242,13 +242,13 @@
   }
   .detail-link:hover { border-color: var(--red); }
   .detail-link svg { width: 14px; height: 14px; fill: var(--red); }
-
+ 
   .team-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
   .chip {
     font-size: 12px; font-weight: 500; color: var(--gray-700);
     background: var(--gray-100); padding: 5px 12px; border-radius: 2px;
   }
-
+ 
   /* ─── FOOTER ─── */
   footer {
     border-top: 1px solid var(--line);
@@ -259,7 +259,7 @@
   footer a { color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
   footer a:hover { color: var(--red); }
   .footer-links { display: flex; gap: 24px; }
-
+ 
   /* ─── MOBILE ─── */
   @media (max-width: 860px) {
     nav { padding: 0 20px; }
@@ -274,7 +274,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Глеб<em>.</em>Максюта</a>
@@ -284,17 +284,17 @@
     <a href="cases.html" class="active">Кейсы</a>
   </div>
 </nav>
-
+ 
 <!-- PAGE HEADER -->
 <div class="page-top">
   <div class="page-top-label">Опыт · Кейсы</div>
   <h1>2 кейса<br>из практики</h1>
   <p>Реальные ситуации, конкретные задачи и измеримые результаты — без воды.</p>
 </div>
-
+ 
 <!-- CASES -->
 <div class="cases-wrap">
-
+ 
   <!-- CASE 1 -->
   <div class="case" id="case1">
     <div class="case-head" onclick="toggleCase('case1')">
@@ -329,11 +329,11 @@
         <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>
       </div>
     </div>
-
+ 
     <div class="case-body">
       <div class="case-body-inner">
         <div class="detail-block">
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Ситуация до прихода</div>
             <div class="detail-text">
@@ -341,14 +341,14 @@
               <p>Каждый день запускалось 5–10 идей в тест — без сбора обратной связи ни по одной из них. Окупаемость была, но бюджет сгорал на пустые тесты.</p>
             </div>
           </div>
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Цели и задачи</div>
             <div class="detail-text">
               <p>Выстроить системный performance-маркетинг: снизить CPL / CPA / CPC / CPM и обеспечить масштабируемую модель закупки трафика. Внедрить аналитику (ROMI, LTV, unit-экономика). Создать генеративный отдел для постоянного потока гипотез.</p>
             </div>
           </div>
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Как достиг результата</div>
             <div class="detail-text">
@@ -365,11 +365,11 @@
               Пример ТЗ на креатив
             </a>
           </div>
-
+ 
         </div>
-
+ 
         <div class="detail-block">
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Результат</div>
             <div class="detail-highlight">
@@ -379,7 +379,7 @@
               <p><strong>Экономия на бесполезных тестах</strong> за 3 года (на основе сквозной аналитики) — <strong>$1 565 128</strong>.</p>
             </div>
           </div>
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Обязанности</div>
             <ul class="detail-list">
@@ -393,7 +393,7 @@
               <li>Подбор и формирование команды под направление</li>
             </ul>
           </div>
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Команда (22 человека)</div>
             <div class="team-chips">
@@ -409,12 +409,12 @@
               <span class="chip">Тех. специалисты</span>
             </div>
           </div>
-
+ 
         </div>
       </div>
     </div>
   </div>
-
+ 
   <!-- CASE 2 -->
   <div class="case" id="case2">
     <div class="case-head" onclick="toggleCase('case2')">
@@ -449,11 +449,11 @@
         <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>
       </div>
     </div>
-
+ 
     <div class="case-body">
       <div class="case-body-inner">
         <div class="detail-block">
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Ситуация до прихода</div>
             <div class="detail-text">
@@ -461,14 +461,14 @@
               <p>Низкая конверсия в продажу, слабая упаковка продукта, нет системной воронки. Непонимание, как расти дальше.</p>
             </div>
           </div>
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Цели и задачи</div>
             <div class="detail-text">
               <p>Увеличить выручку с 1,8 млн ₽ до 5 млн ₽/мес. Построить автоворонки для автоматического прогрева ЦА. Повысить конверсию в продажу. Связать трафик и траты с заработком — создать прибыльную систему. Пересобрать команду.</p>
             </div>
           </div>
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Как достиг результата</div>
             <div class="detail-text">
@@ -477,11 +477,11 @@
               <p>В этом проекте было важно соблюсти баланс маркетинга, подачи контента и офферов под видение эксперта. Запустил SMM-отдел — получили 4 000 000 органического охвата в Instagram, VK, LinkedIn, YouTube.</p>
             </div>
           </div>
-
+ 
         </div>
-
+ 
         <div class="detail-block">
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Результат</div>
             <div class="detail-highlight">
@@ -494,7 +494,7 @@
               <p>Органический охват через SMM — <strong>4 000 000</strong> на площадках Instagram, VK, LinkedIn, YouTube.</p>
             </div>
           </div>
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Обязанности</div>
             <ul class="detail-list">
@@ -508,7 +508,7 @@
               <li>Разработка офферов, акций, POS-материалов</li>
             </ul>
           </div>
-
+ 
           <div class="detail-section">
             <div class="detail-heading">Команда (14 человек)</div>
             <div class="team-chips">
@@ -524,14 +524,14 @@
               <span class="chip">Посевщики</span>
             </div>
           </div>
-
+ 
         </div>
       </div>
     </div>
   </div>
-
+ 
 </div>
-
+ 
 <!-- FOOTER -->
 <footer>
   <span>© 2026 ИП Максюта Глеб Алексеевич · ИНН 402810081034</span>
@@ -542,7 +542,7 @@
     <a href="https://t.me/MaksutaGleb" target="_blank">Telegram</a>
   </div>
 </footer>
-
+ 
 <script>
   function toggleCase(id) {
     const el = document.getElementById(id);
@@ -553,6 +553,6 @@
     if (!isOpen) el.classList.add('open');
   }
 </script>
-
+ 
 </body>
 </html>
