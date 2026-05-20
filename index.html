@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейсы — Глеб Максюта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #a00d24;
+    --black: #0F0F0F;
+    --gray-900: #1a1a1a;
+    --gray-700: #3d3d3d;
+    --gray-500: #6b6b6b;
+    --gray-200: #d8d8d8;
+    --gray-100: #f4f4f4;
+    --gray-50: #fafafa;
+    --white: #ffffff;
+    --line: #e8e8e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 60px; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Unbounded', sans-serif; font-weight: 900;
+    font-size: 14px; letter-spacing: -0.5px;
+    color: var(--black); text-decoration: none;
+  }
+  .nav-logo em { color: var(--red); font-style: normal; }
+  .nav-right { display: flex; gap: 32px; align-items: center; }
+  .nav-right a {
+    font-size: 13px; font-weight: 500; color: var(--gray-700);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-right a:hover { color: var(--red); }
+  .nav-right a.active { color: var(--red); }
+
+  /* ─── PAGE HEADER ─── */
+  .page-top {
+    padding: 130px 60px 72px;
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--line);
+  }
+  .page-top-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--red); margin-bottom: 18px;
+  }
+  .page-top h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -1px; margin-bottom: 20px;
+  }
+  .page-top p {
+    font-size: 17px; color: var(--gray-700);
+    max-width: 560px; line-height: 1.7;
+  }
+
+  /* ─── CASES ─── */
+  .cases-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 80px 60px 120px;
+  }
+
+  /* ─── SINGLE CASE ─── */
+  .case {
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    transition: border-color 0.25s;
+  }
+  .case.open { border-color: var(--red); }
+
+  /* header always visible */
+  .case-head {
+    padding: 36px 40px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    background: var(--white);
+    transition: background 0.2s;
+    user-select: none;
+  }
+  .case-head:hover { background: var(--gray-50); }
+  .case.open .case-head { background: var(--white); border-bottom: 1px solid var(--line); }
+
+  .case-meta {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 14px; flex-wrap: wrap;
+  }
+  .case-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    color: var(--red); text-transform: uppercase;
+  }
+  .case-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--gray-500);
+    padding: 4px 10px; border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .case-period {
+    font-size: 12px; color: var(--gray-500);
+  }
+
+  .case-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 800; line-height: 1.2;
+    letter-spacing: -0.4px; margin-bottom: 16px;
+  }
+
+  .case-summary {
+    font-size: 15px; color: var(--gray-700);
+    line-height: 1.7; max-width: 620px;
+  }
+
+  /* metrics strip */
+  .case-metrics {
+    display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap;
+  }
+  .m-item { display: flex; flex-direction: column; }
+  .m-val {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 28px; font-weight: 900;
+    line-height: 1; color: var(--black);
+  }
+  .m-val.red { color: var(--red); }
+  .m-label {
+    font-size: 11px; color: var(--gray-500);
+    margin-top: 5px; letter-spacing: 0.2px;
+  }
+
+  /* toggle arrow */
+  .case-toggle {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border: 1.5px solid var(--line); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s, transform 0.3s;
+  }
+  .case-toggle svg {
+    width: 16px; height: 16px; fill: var(--gray-700);
+    transition: transform 0.3s;
+  }
+  .case:hover .case-toggle { border-color: var(--red); }
+  .case:hover .case-toggle svg { fill: var(--red); }
+  .case.open .case-toggle { background: var(--red); border-color: var(--red); }
+  .case.open .case-toggle svg { fill: var(--white); transform: rotate(180deg); }
+
+  /* ─── DETAILS (accordion body) ─── */
+  .case-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .case.open .case-body { max-height: 2000px; }
+
+  .case-body-inner {
+    padding: 40px 40px 44px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  }
+
+  .detail-block { }
+  .detail-block + .detail-block { }
+
+  .detail-section { margin-bottom: 32px; }
+  .detail-section:last-child { margin-bottom: 0; }
+
+  .detail-heading {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .detail-text {
+    font-size: 14px; line-height: 1.85; color: var(--gray-700);
+  }
+  .detail-text p { margin-bottom: 12px; }
+  .detail-text p:last-child { margin-bottom: 0; }
+  .detail-text strong { color: var(--black); font-weight: 600; }
+
+  .detail-list {
+    list-style: none; margin-top: 2px;
+  }
+  .detail-list li {
+    font-size: 14px; line-height: 1.7; color: var(--gray-700);
+    padding: 8px 0; border-bottom: 1px solid var(--gray-100);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .detail-list li:last-child { border-bottom: none; }
+  .detail-list li::before {
+    content: '—'; color: var(--red); flex-shrink: 0;
+    font-weight: 700; margin-top: 1px;
+  }
+
+  .detail-highlight {
+    background: rgba(200,16,46,0.05);
+    border-left: 3px solid var(--red);
+    border-radius: 2px;
+    padding: 16px 20px;
+    margin-top: 16px;
+  }
+  .detail-highlight p {
+    font-size: 14px; line-height: 1.7; color: var(--gray-700);
+    margin: 0;
+  }
+  .detail-highlight strong { color: var(--black); }
+
+  .detail-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; color: var(--red);
+    text-decoration: none; margin-top: 14px;
+    border-bottom: 1px solid rgba(200,16,46,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+  .detail-link:hover { border-color: var(--red); }
+  .detail-link svg { width: 14px; height: 14px; fill: var(--red); }
+
+  .team-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip {
+    font-size: 12px; font-weight: 500; color: var(--gray-700);
+    background: var(--gray-100); padding: 5px 12px; border-radius: 2px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 26px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--gray-500); flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--red); }
+  .footer-links { display: flex; gap: 24px; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 860px) {
+    nav { padding: 0 20px; }
+    .page-top { padding: 110px 20px 48px; }
+    .cases-wrap { padding: 40px 20px 80px; }
+    .case-head { padding: 24px 20px; }
+    .case-body-inner { grid-template-columns: 1fr; gap: 0; padding: 24px 20px 32px; }
+    .case-metrics { gap: 20px; }
+    .m-val { font-size: 22px; }
+    footer { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Глеб<em>.</em>Максюта</a>
+  <div class="nav-right">
+    <a href="index.html">Главная</a>
+    <a href="marketer.html">Маркетолог</a>
+    <a href="cases.html" class="active">Кейсы</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-top">
+  <div class="page-top-label">Опыт · Кейсы</div>
+  <h1>2 кейса<br>из практики</h1>
+  <p>Реальные ситуации, конкретные задачи и измеримые результаты — без воды.</p>
+</div>
+
+<!-- CASES -->
+<div class="cases-wrap">
+
+  <!-- CASE 1 -->
+  <div class="case" id="case1">
+    <div class="case-head" onclick="toggleCase('case1')">
+      <div>
+        <div class="case-meta">
+          <span class="case-num">Кейс 01</span>
+          <span class="case-tag">Медиабаинг · США</span>
+          <span class="case-period">Январь 2024 — Март 2026</span>
+        </div>
+        <div class="case-title">Медиабаинговый холдинг:<br>с $100K до $400K/мес без потери эффективности</div>
+        <div class="case-summary">Маркетинг был хаотичным: тест за тестом без обратной связи, ROMI не считался, масштабирования не было. За 2 года выстроил системный performance-маркетинг и масштабировал лидогенерацию в 4,7 раза.</div>
+        <div class="case-metrics">
+          <div class="m-item">
+            <div class="m-val red">×4.7</div>
+            <div class="m-label">рост лидогенерации</div>
+          </div>
+          <div class="m-item">
+            <div class="m-val">$400K</div>
+            <div class="m-label">бюджет в месяц</div>
+          </div>
+          <div class="m-item">
+            <div class="m-val red">87%</div>
+            <div class="m-label">прибыльных связок</div>
+          </div>
+          <div class="m-item">
+            <div class="m-val">22</div>
+            <div class="m-label">человека в команде</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-toggle">
+        <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>
+      </div>
+    </div>
+
+    <div class="case-body">
+      <div class="case-body-inner">
+        <div class="detail-block">
+
+          <div class="detail-section">
+            <div class="detail-heading">Ситуация до прихода</div>
+            <div class="detail-text">
+              <p>Маркетинг был разрозненным: отсутствовала единая стратегия, трафик закупался без системной аналитики, ROMI не считался, CPL нестабилен.</p>
+              <p>Каждый день запускалось 5–10 идей в тест — без сбора обратной связи ни по одной из них. Окупаемость была, но бюджет сгорал на пустые тесты.</p>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-heading">Цели и задачи</div>
+            <div class="detail-text">
+              <p>Выстроить системный performance-маркетинг: снизить CPL / CPA / CPC / CPM и обеспечить масштабируемую модель закупки трафика. Внедрить аналитику (ROMI, LTV, unit-экономика). Создать генеративный отдел для постоянного потока гипотез.</p>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-heading">Как достиг результата</div>
+            <div class="detail-text">
+              <p>Выстроил управляемую performance-систему: внедрил структуру тестирования гипотез (50+ в неделю) и централизованный учёт метрик. Разработал собственную систему аналитики с привязкой к рекламным кабинетам — это позволило быстро отсекать неэффективные связки.</p>
+              <p>Внедрил сквозную аналитику (LTV, CAC, ROMI), пересобрал воронки и офферы под сегменты ЦА. Собрал новые видео и VSL, создал генеративный отдел (креативы, связки, команда). Организовал потоковое производство креативов с использованием AI.</p>
+            </div>
+            <a href="https://docs.google.com/spreadsheets/d/1BNsCVooOlhx_FeM8USOnoIajnvi0UVPoLDRcygGQNpY/edit?gid=1828574261#gid=1828574261" target="_blank" class="detail-link">
+              <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+              Пример таблицы аналитики
+            </a>
+            <br>
+            <a href="https://drive.google.com/file/d/1ZfwF6lF4P9QAa6s1pJisFhg9R0UMLWqQ/view?usp=sharing" target="_blank" class="detail-link">
+              <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+              Пример ТЗ на креатив
+            </a>
+          </div>
+
+        </div>
+
+        <div class="detail-block">
+
+          <div class="detail-section">
+            <div class="detail-heading">Результат</div>
+            <div class="detail-highlight">
+              <p><strong>Масштабировал рекламный бюджет с $100K до $400K/мес</strong> при сохранении эффективности. Объём лидогенерации вырос в 4,7 раза (при среднерыночном показателе ×2,5 за тот же период). Доля прибыльных связок — 87%.</p>
+            </div>
+            <div class="detail-highlight" style="margin-top:12px;">
+              <p><strong>Экономия на бесполезных тестах</strong> за 3 года (на основе сквозной аналитики) — <strong>$1 565 128</strong>.</p>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-heading">Обязанности</div>
+            <ul class="detail-list">
+              <li>Разработка маркетинговой стратегии и стратегии продвижения (US + другие гео)</li>
+              <li>Аналитика метрик: ROMI, ROI, LTV, оценка эффективности</li>
+              <li>Управление CPL, CPA, CPC, CPM и оптимизация кампаний</li>
+              <li>Генерация и тестирование гипотез, A/B тестирование, масштабирование</li>
+              <li>Настройка рекламы: Google Ads, Facebook, таргет, контекст</li>
+              <li>Работа с воронками и каналами привлечения</li>
+              <li>Контроль бюджета и оптимизация рекламных затрат</li>
+              <li>Подбор и формирование команды под направление</li>
+            </ul>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-heading">Команда (22 человека)</div>
+            <div class="team-chips">
+              <span class="chip">Байеры</span>
+              <span class="chip">Проджект</span>
+              <span class="chip">Копирайтеры</span>
+              <span class="chip">Дизайнеры</span>
+              <span class="chip">Видеомейкеры</span>
+              <span class="chip">ИИ-генераторы</span>
+              <span class="chip">Переводчики</span>
+              <span class="chip">Аналитики</span>
+              <span class="chip">HR</span>
+              <span class="chip">Тех. специалисты</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE 2 -->
+  <div class="case" id="case2">
+    <div class="case-head" onclick="toggleCase('case2')">
+      <div>
+        <div class="case-meta">
+          <span class="case-num">Кейс 02</span>
+          <span class="case-tag">EdTech · Онлайн-школа</span>
+          <span class="case-period">Май 2022 — Декабрь 2023</span>
+        </div>
+        <div class="case-title">Академия психологии:<br>с 1,8 млн до 5,5 млн ₽/мес без роста бюджета</div>
+        <div class="case-summary">Маркетинг держался на одном канале и базе. Нет воронок, нет системы. За 1,5 года пересобрал продукт, запустил автоворонки и вывел проект на стабильный рост без дополнительных вложений.</div>
+        <div class="case-metrics">
+          <div class="m-item">
+            <div class="m-val red">×3.1</div>
+            <div class="m-label">рост выручки</div>
+          </div>
+          <div class="m-item">
+            <div class="m-val">62%</div>
+            <div class="m-label">продаж с автоворонок</div>
+          </div>
+          <div class="m-item">
+            <div class="m-val red">64%</div>
+            <div class="m-label">конверсия в продажу</div>
+          </div>
+          <div class="m-item">
+            <div class="m-val">4M</div>
+            <div class="m-label">органический охват</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-toggle">
+        <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>
+      </div>
+    </div>
+
+    <div class="case-body">
+      <div class="case-body-inner">
+        <div class="detail-block">
+
+          <div class="detail-section">
+            <div class="detail-heading">Ситуация до прихода</div>
+            <div class="detail-text">
+              <p>Маркетинг завязан на одном канале и на руководителе. Команда слабая, всё держится на собранной базе — нового притока аудитории нет. Диверсификации трафика не было.</p>
+              <p>Низкая конверсия в продажу, слабая упаковка продукта, нет системной воронки. Непонимание, как расти дальше.</p>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-heading">Цели и задачи</div>
+            <div class="detail-text">
+              <p>Увеличить выручку с 1,8 млн ₽ до 5 млн ₽/мес. Построить автоворонки для автоматического прогрева ЦА. Повысить конверсию в продажу. Связать трафик и траты с заработком — создать прибыльную систему. Пересобрать команду.</p>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-heading">Как достиг результата</div>
+            <div class="detail-text">
+              <p>Пересобрал продуктовую линейку и офферы под разные сегменты аудитории — сформировал целостную продуктовую матрицу. Разработал и внедрил автоворонки (вебинары, лид-магниты, трипваеры), переведя продажи из ручного режима в полуавтоматическую модель.</p>
+              <p>Повысил конверсию за счёт переработки смыслов, структуры прогрева и логики продаж (AIDA / СВП). Диверсифицировал каналы трафика и выстроил стабильную лидогенерацию с контролем экономики.</p>
+              <p>В этом проекте было важно соблюсти баланс маркетинга, подачи контента и офферов под видение эксперта. Запустил SMM-отдел — получили 4 000 000 органического охвата в Instagram, VK, LinkedIn, YouTube.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="detail-block">
+
+          <div class="detail-section">
+            <div class="detail-heading">Результат</div>
+            <div class="detail-highlight">
+              <p><strong>Увеличил выручку с 1,8 млн ₽ до 5,5 млн ₽/мес</strong> без повышения бюджета на команду и трафик — за счёт оптимизации.</p>
+            </div>
+            <div class="detail-highlight" style="margin-top:12px;">
+              <p>Конверсия в продажу выросла <strong>с 40% до 64%</strong>. Запустил 5 автоворонок, которые дают <strong>62% всех продаж</strong>.</p>
+            </div>
+            <div class="detail-highlight" style="margin-top:12px;">
+              <p>Органический охват через SMM — <strong>4 000 000</strong> на площадках Instagram, VK, LinkedIn, YouTube.</p>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-heading">Обязанности</div>
+            <ul class="detail-list">
+              <li>Анализ конкурентов, аудитория и позиционирование бренда</li>
+              <li>Привлечение лидов через онлайн и оффлайн инструменты</li>
+              <li>Ведение и оптимизация сайта, интеграция с CRM</li>
+              <li>Контроль подрядчиков, взаимодействие с партнёрами и блогерами</li>
+              <li>Разработка контент-стратегии, контент-план, тексты, посты</li>
+              <li>Продвижение в Instagram, TikTok, YouTube, Telegram, Reels</li>
+              <li>Подготовка отчётов и анализ эффективности каналов</li>
+              <li>Разработка офферов, акций, POS-материалов</li>
+            </ul>
+          </div>
+
+          <div class="detail-section">
+            <div class="detail-heading">Команда (14 человек)</div>
+            <div class="team-chips">
+              <span class="chip">SMM</span>
+              <span class="chip">Проджект</span>
+              <span class="chip">Фин. директор</span>
+              <span class="chip">Юристы</span>
+              <span class="chip">Бухгалтеры</span>
+              <span class="chip">Копирайтер</span>
+              <span class="chip">Дизайнер</span>
+              <span class="chip">Тех. спец.</span>
+              <span class="chip">Закупщики рекламы</span>
+              <span class="chip">Посевщики</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 ИП Максюта Глеб Алексеевич · ИНН 402810081034</span>
+  <div class="footer-links">
+    <a href="index.html">Главная</a>
+    <a href="marketer.html">Маркетолог</a>
+    <a href="privacy.html">Политика конф.</a>
+    <a href="https://t.me/MaksutaGleb" target="_blank">Telegram</a>
+  </div>
+</footer>
+
+<script>
+  function toggleCase(id) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.contains('open');
+    // close all
+    document.querySelectorAll('.case').forEach(c => c.classList.remove('open'));
+    // open clicked if it was closed
+    if (!isOpen) el.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
