@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Политика конфиденциальности — Глеб Максюта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #a00d24;
+    --black: #0F0F0F;
+    --gray-700: #3d3d3d;
+    --gray-500: #6b6b6b;
+    --gray-100: #f4f4f4;
+    --gray-50: #fafafa;
+    --white: #ffffff;
+    --accent-line: #e8e8e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--accent-line);
+    padding: 0 60px; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Unbounded', sans-serif; font-weight: 700;
+    font-size: 15px; color: var(--black); text-decoration: none;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; color: var(--gray-700);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta {
+    background: var(--red); color: var(--white) !important;
+    padding: 10px 24px; border-radius: 4px;
+    font-size: 13px !important; font-weight: 600 !important;
+  }
+
+  .page-hero {
+    padding: 140px 60px 60px;
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--accent-line);
+  }
+  .page-hero-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--red); margin-bottom: 12px;
+  }
+  .page-hero h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900; line-height: 1.1;
+    letter-spacing: -0.5px; margin-bottom: 16px;
+  }
+  .page-hero p { font-size: 15px; color: var(--gray-700); }
+
+  .content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  .content h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 20px; font-weight: 700;
+    margin: 48px 0 16px; color: var(--black);
+  }
+  .content h2:first-child { margin-top: 0; }
+
+  .content p {
+    font-size: 15px; line-height: 1.8;
+    color: var(--gray-700); margin-bottom: 16px;
+  }
+
+  .content ul {
+    padding-left: 20px; margin-bottom: 16px;
+  }
+  .content ul li {
+    font-size: 15px; line-height: 1.8;
+    color: var(--gray-700); margin-bottom: 8px;
+  }
+
+  .content a { color: var(--red); text-decoration: none; }
+  .content a:hover { text-decoration: underline; }
+
+  .info-box {
+    background: var(--gray-50); border: 1.5px solid var(--accent-line);
+    border-radius: 6px; padding: 24px 28px; margin: 32px 0;
+  }
+  .info-box p { margin-bottom: 8px; font-size: 14px; }
+  .info-box p:last-child { margin-bottom: 0; }
+  .info-box strong { color: var(--black); }
+
+  footer {
+    padding: 28px 60px;
+    border-top: 1px solid var(--accent-line);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--gray-500); flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--gray-500); text-decoration: none; }
+  footer a:hover { color: var(--red); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .page-hero { padding: 120px 20px 40px; }
+    .content { padding: 40px 20px; }
+    footer { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Глеб<span>.</span>Максюта</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="marketer.html">Маркетолог</a></li>
+    <li><a href="marketer.html#contact" class="nav-cta">Связаться</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-label">Документы</div>
+  <h1>Политика конфиденциальности</h1>
+  <p>Обновлено: май 2026 года</p>
+</div>
+
+<div class="content">
+
+  <div class="info-box">
+    <p><strong>Оператор персональных данных:</strong></p>
+    <p>Индивидуальный предприниматель Максюта Глеб Алексеевич</p>
+    <p>ИНН: 402810081034</p>
+    <p>Email: <a href="mailto:maxutagleb@gmail.com">maxutagleb@gmail.com</a></p>
+    <p>Телефон: <a href="tel:+79533202262">+7 (953) 320-22-62</a></p>
+    <p>Сайт: <a href="https://nastavniktatata-sudo.github.io/saiit/" target="_blank">nastavniktatata-sudo.github.io/saiit</a></p>
+  </div>
+
+  <h2>1. Общие положения</h2>
+  <p>Настоящая Политика конфиденциальности (далее — Политика) действует в отношении всей информации, которую ИП Максюта Глеб Алексеевич (далее — Оператор) может получить о пользователе в процессе использования сайта.</p>
+  <p>Используя сайт, вы соглашаетесь с условиями настоящей Политики конфиденциальности. Если вы не согласны с условиями, пожалуйста, прекратите использование сайта.</p>
+
+  <h2>2. Какие персональные данные мы собираем</h2>
+  <p>В рамках настоящей Политики под персональными данными понимается:</p>
+  <ul>
+    <li>Имя, которое пользователь указывает при заполнении контактной формы;</li>
+    <li>Номер телефона;</li>
+    <li>Адрес электронной почты;</li>
+    <li>Имя пользователя в Telegram;</li>
+    <li>Содержание обращения / запроса;</li>
+    <li>Технические данные: IP-адрес, тип браузера, данные cookie — в целях аналитики и корректной работы сайта.</li>
+  </ul>
+  <p>Сайт не собирает специальные категории персональных данных (раса, политические взгляды, здоровье и т.д.).</p>
+
+  <h2>3. Цели сбора и обработки персональных данных</h2>
+  <p>Оператор обрабатывает персональные данные исключительно в следующих целях:</p>
+  <ul>
+    <li>Обратная связь с пользователем по поданной заявке;</li>
+    <li>Обсуждение возможного сотрудничества;</li>
+    <li>Улучшение качества работы сайта и пользовательского опыта;</li>
+    <li>Соблюдение требований законодательства Российской Федерации.</li>
+  </ul>
+
+  <h2>4. Условия обработки и передачи третьим лицам</h2>
+  <p>Оператор хранит персональные данные пользователей в соответствии с внутренними регламентами.</p>
+  <p>Оператор не передаёт персональные данные третьим лицам, за исключением следующих случаев:</p>
+  <ul>
+    <li>Пользователь выразил явное согласие на такие действия;</li>
+    <li>Передача необходима для исполнения договора с пользователем;</li>
+    <li>Передача предусмотрена российским или иным применимым законодательством;</li>
+    <li>В целях защиты прав и законных интересов Оператора.</li>
+  </ul>
+  <p>Данные из контактной формы сохраняются в Google Таблице, доступной только Оператору. Google LLC является обработчиком данных и действует в соответствии со своей политикой конфиденциальности.</p>
+
+  <h2>5. Изменение и удаление данных пользователем</h2>
+  <p>Пользователь вправе в любой момент потребовать уточнения, блокировки или уничтожения своих персональных данных, направив соответствующий запрос Оператору.</p>
+  <p>Запросы направляются по email: <a href="mailto:maxutagleb@gmail.com">maxutagleb@gmail.com</a></p>
+
+  <h2>6. Меры по защите персональных данных</h2>
+  <p>Оператор принимает необходимые организационные и технические меры для защиты персональных данных от несанкционированного доступа, изменения, раскрытия или уничтожения. Сайт использует защищённое соединение HTTPS.</p>
+
+  <h2>7. Cookie-файлы</h2>
+  <p>Сайт может использовать cookie-файлы для обеспечения корректной работы и анализа посещаемости. Пользователь может отключить использование cookie в настройках браузера, однако это может повлиять на работу отдельных функций сайта.</p>
+
+  <h2>8. Применимое законодательство</h2>
+  <p>Настоящая Политика разработана в соответствии с требованиями Федерального закона № 152-ФЗ «О персональных данных» Российской Федерации. При возникновении любых разногласий стороны будут стремиться урегулировать их в досудебном порядке.</p>
+
+  <h2>9. Изменение Политики</h2>
+  <p>Оператор оставляет за собой право вносить изменения в настоящую Политику в одностороннем порядке. Актуальная версия всегда доступна на данной странице. Продолжение использования сайта после внесения изменений означает согласие с новой редакцией Политики.</p>
+
+  <h2>10. Обратная связь</h2>
+  <p>Все вопросы по настоящей Политике направляйте по следующим контактам:</p>
+  <div class="info-box">
+    <p><strong>Email:</strong> <a href="mailto:maxutagleb@gmail.com">maxutagleb@gmail.com</a></p>
+    <p><strong>Telegram:</strong> <a href="https://t.me/MaksutaGleb" target="_blank">@MaksutaGleb</a></p>
+    <p><strong>Телефон:</strong> <a href="tel:+79533202262">+7 (953) 320-22-62</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 ИП Максюта Глеб Алексеевич · ИНН 402810081034</span>
+  <div style="display:flex;gap:20px;">
+    <a href="index.html">Главная</a>
+    <a href="marketer.html">Маркетолог</a>
+    <a href="https://t.me/MaksutaGleb" target="_blank">Telegram</a>
+  </div>
+</footer>
+
+</body>
+</html>
